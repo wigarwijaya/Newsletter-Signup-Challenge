@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 // const request = require("request");
 const https = require("https");
-const port = 3000;
+// create a dynamic port. so at any given point, it might decide to deploy your app to port 3000 or 5000 or whatever it is on
+const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -61,13 +62,33 @@ app.post("/failure", (req, res) => {
     res.redirect("/");
 })
 
-app.listen(port, () => {
+app.listen(port || 3000, () => {
   console.log(`App is running on port ${port}`);
 });
  
 
 // API Key
 // 4f68c4ced735e73b9a77b07cc5d57081-us18
+// newest
+// ***DELETETHISf98677ad92bbee9bf60a2a76868df739-us18DELETETHIS***
 
 // List ID
 // 2fa486ac68
+
+// const client = require("mailchimp-marketing");
+
+// client.setConfig({
+//   apiKey: "YOUR_API_KEY",
+//   server: "YOUR_SERVER_PREFIX",
+// });
+
+// const run = async () => {
+//   const response = await client.lists.batchListMembers("list_id", {
+//     members: [{}],
+//   });
+//   console.log(response);
+// };
+
+// run();
+
+
